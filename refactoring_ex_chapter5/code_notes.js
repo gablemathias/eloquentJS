@@ -112,3 +112,11 @@ console.log("The average year of living languages is:", Math.round(average(
 console.log("The average year of dead scripts is:", Math.round(average(
   SCRIPTS.filter(s => !s.living).map(s => s.year))));
 
+const myObject = {
+  property: 'Value!',
+  otherProperty: 77,
+  "obnoxious property": function() {
+    // smt here to do stuff!
+  }
+}
+
