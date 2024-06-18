@@ -1,23 +1,21 @@
 class Group {
-  constructor(){
-    this.group = [];
-  }
+  #members = []
 
   add(value){
     if(!this.has(value)){
-      this.group.push(value);
+      this.#members.push(value);
     }
   }
 
   delete(value){
     if(this.has(value)){
-      let indexOfValueToRemove = this.group.indexOf(value)
-      this.group.splice(indexOfValueToRemove, 1);
+      let indexOfValueToRemove = this.#members.indexOf(value)
+      this.#members.splice(indexOfValueToRemove, 1);
     }
   }
 
   has(value){
-    return this.group.includes(value);
+    return this.#members.includes(value);
   }
 
   static from(values){
