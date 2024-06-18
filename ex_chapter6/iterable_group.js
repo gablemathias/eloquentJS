@@ -25,15 +25,29 @@ class Group {
     }
     return set;
   }
+
+  [Symbol.iterator]() {
+    return new GroupIterator(this.#members);
+  }
 }
 
-let group = Group.from([10, 20]);
-console.log(group.has(10));
-// → true
-console.log(group.has(30));
-// → false
-group.add(10);
-group.delete(10);
-console.log(group.has(10));
-// → false
+class GroupIterator {
+  #members;
+  #position;
+  
+  constructor(members) {
+    this.#members = members;
+    this.#position = 0;
+  }
 
+  next() {
+    if (this.#position >= this.#members.length) {
+      return {done: true};
+    } else {
+      let result = {value: this.#members[this.#position],
+                    done: false};
+      this.#position++;
+      return result;
+    }
+  }
+}
