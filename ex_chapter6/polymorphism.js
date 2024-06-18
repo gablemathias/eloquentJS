@@ -55,9 +55,14 @@ class Temperature {
   set fahrenheit(value) {
     this.celsius = (value - 32) / 1.8;
   }
+
+  static fromFahrenheit(value) {
+    return new Temperature(Math.floor((value - 32) / 1.8));
+  }
 }
 
 let newTemp = new Temperature(24);
+let newTempFromF = Temperature.fromFahrenheit(102);
 
+console.log(newTempFromF.celsius);
 console.log(newTemp.fahrenheit);
-new
